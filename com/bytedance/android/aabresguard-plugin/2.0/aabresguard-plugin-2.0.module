@@ -3,14 +3,14 @@
   "component": {
     "group": "com.bytedance.android",
     "module": "aabresguard-plugin",
-    "version": "0.1.12",
+    "version": "2.0",
     "attributes": {
       "org.gradle.status": "release"
     }
   },
   "createdBy": {
     "gradle": {
-      "version": "8.6"
+      "version": "8.14.3"
     }
   },
   "variants": [
@@ -30,7 +30,7 @@
           "group": "com.bytedance.android",
           "module": "aabresguard-core",
           "version": {
-            "requires": "0.1.12"
+            "requires": "2.0"
           },
           "excludes": [
             {
@@ -50,13 +50,13 @@
       ],
       "files": [
         {
-          "name": "aabresguard-plugin-0.1.12.jar",
-          "url": "aabresguard-plugin-0.1.12.jar",
-          "size": 23396,
-          "sha512": "1330b924d8060f9bf65301021e654f02b3912e1e6c3f949e8410101f24543eebca4b3e9a4775f310d197f4bd9cdac4546750f37e5f5252de5de4189843d244ec",
-          "sha256": "dd6447d4c0ae25245ebfaf28dc70dfce331324a1a63f9c78f6b94486a4007926",
-          "sha1": "1ec282e7866e67c624115fcb857f86b279c538b5",
-          "md5": "3584d40f6872e33ff66df1df71802f52"
+          "name": "aabresguard-plugin-2.0.jar",
+          "url": "aabresguard-plugin-2.0.jar",
+          "size": 19904,
+          "sha512": "871deb3cde921e158eb001e76d4ae8e84ddd7253d4d843a6939a8db5c60e022c324e757950958adb63798c1196deb7a43f56e13d4da8b71493a045fdfc87e24d",
+          "sha256": "c6f4e8d1f3a4e41d87e2f152851649a7da3630980c33e2bdc3e71243b6a8dc4e",
+          "sha1": "ba2ef69c095faf25db41692e5f014a44cca54973",
+          "md5": "78d5d35602852f4b816f84adbfcebdde"
         }
       ]
     },
@@ -76,7 +76,7 @@
           "group": "org.jetbrains.kotlin",
           "module": "kotlin-stdlib-jdk7",
           "version": {
-            "requires": "1.8.20"
+            "requires": "2.2.0"
           },
           "excludes": [
             {
@@ -89,7 +89,7 @@
           "group": "org.jetbrains.kotlin",
           "module": "kotlin-gradle-plugin",
           "version": {
-            "requires": "1.8.20"
+            "requires": "2.2.0"
           },
           "excludes": [
             {
@@ -102,7 +102,7 @@
           "group": "com.bytedance.android",
           "module": "aabresguard-core",
           "version": {
-            "requires": "0.1.12"
+            "requires": "2.0"
           },
           "excludes": [
             {
@@ -122,13 +122,13 @@
       ],
       "files": [
         {
-          "name": "aabresguard-plugin-0.1.12.jar",
-          "url": "aabresguard-plugin-0.1.12.jar",
-          "size": 23396,
-          "sha512": "1330b924d8060f9bf65301021e654f02b3912e1e6c3f949e8410101f24543eebca4b3e9a4775f310d197f4bd9cdac4546750f37e5f5252de5de4189843d244ec",
-          "sha256": "dd6447d4c0ae25245ebfaf28dc70dfce331324a1a63f9c78f6b94486a4007926",
-          "sha1": "1ec282e7866e67c624115fcb857f86b279c538b5",
-          "md5": "3584d40f6872e33ff66df1df71802f52"
+          "name": "aabresguard-plugin-2.0.jar",
+          "url": "aabresguard-plugin-2.0.jar",
+          "size": 19904,
+          "sha512": "871deb3cde921e158eb001e76d4ae8e84ddd7253d4d843a6939a8db5c60e022c324e757950958adb63798c1196deb7a43f56e13d4da8b71493a045fdfc87e24d",
+          "sha256": "c6f4e8d1f3a4e41d87e2f152851649a7da3630980c33e2bdc3e71243b6a8dc4e",
+          "sha1": "ba2ef69c095faf25db41692e5f014a44cca54973",
+          "md5": "78d5d35602852f4b816f84adbfcebdde"
         }
       ]
     }

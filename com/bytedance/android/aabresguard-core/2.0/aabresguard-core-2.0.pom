@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.bytedance.android</groupId>
   <artifactId>aabresguard-core</artifactId>
-  <version>0.1.12</version>
+  <version>2.0</version>
   <dependencies>
     <dependency>
       <groupId>commons-io</groupId>
@@ -32,28 +32,8 @@
     <dependency>
       <groupId>com.android.tools.build</groupId>
       <artifactId>bundletool</artifactId>
-      <version>1.15.2</version>
+      <version>1.18.1</version>
       <scope>runtime</scope>
     </dependency>
   </dependencies>
-  <description>The tool of obfuscated aab resources</description>
-  <name>AabResGuard</name>
-  <url>https://github.com/bytedance/AabResGuard</url>
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-  <developers>
-    <developer>
-      <id>JingYeoh</id>
-      <name>JingYeoh</name>
-      <email>yangjing.yeoh@gmail.com</email>
-    </developer>
-  </developers>
-  <scm>
-    <url>https://github.com/bytedance/AabResGuard</url>
-  </scm>
 </project>
