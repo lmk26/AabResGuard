@@ -11,7 +11,7 @@
 
 > Powered by bytedance douyin android team.
 
-> The tools from the bytedance team have not been updated for a long time. xeemoo has been based on [martinloren](https://github.com/martinloren/AabResGuard) since 2024 continue to maintain the work.
+> The tools from the bytedance team have not been updated for a long time. lmk26 has been based on [xeemoo](https://github.com/xeemoo/AabResGuard) since 2025 continue to maintain the work.
 > Now supports AGP 7.0 and above, and can be verified and used on BundleTool 1.15.2.
 
 ## Features
@@ -41,7 +41,7 @@ buildscript {
     mavenCentral()
     mavenLocal()
     google()
-    maven { url 'https://raw.githubusercontent.com/xeemoo/AabResGuard/mvn-repo' }
+    maven { url 'https://raw.githubusercontent.com/lmk26/AabResGuard/mvn-repo' }
   }
   dependencies {
     classpath "com.bytedance.android:aabresguard-plugin:0.1.12"

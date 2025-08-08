@@ -1,0 +1,37 @@
+apply plugin: 'maven-publish'
+
+tasks.register('sourcesJar', Jar) {
+    dependsOn classes
+    from sourceSets.main.java.srcDirs
+    archiveClassifier.set('sources')
+    archiveVersion = versions[ARTIFACT_ID]
+}
+
+tasks.register('javadocJar', Jar) {
+    dependsOn javadoc
+    from javadoc.destinationDir
+    archiveClassifier.set('javadoc')
+    archiveVersion = versions[ARTIFACT_ID]
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+publishing {
+    if (project.plugins.hasPlugin("java-library") || project.plugins.hasPlugin("java")) {
+        publications {
+            Plugin(MavenPublication) {
+                from components.java
+                groupId GROUP_ID
+                artifactId ARTIFACT_ID
+                version versions[ARTIFACT_ID]
+                artifact sourcesJar
+                artifact javadocJar
+            }
+        }
+    } else {
+        throw new GradleScriptException("java-library plugin required")
+    }
+}

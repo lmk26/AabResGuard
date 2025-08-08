@@ -20,7 +20,7 @@ buildscript {
     }
     dependencies {
         classpath deps.plugin.shadow
-        classpath deps.plugin['bintray-plugin']
+//        classpath deps.plugin['bintray-plugin']
         classpath deps.gradle.agp
         classpath deps.kotlin.plugin
 

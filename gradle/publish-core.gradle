@@ -1,0 +1,28 @@
+apply plugin: 'maven-publish'
+
+tasks.register('sourcesJar', Jar) {
+    from sourceSets.main.java.srcDirs
+    dependsOn classes
+    archiveClassifier = 'sources'
+    archiveVersion = versions[ARTIFACT_ID]
+}
+
+tasks.register('javadocJar', Jar) {
+    dependsOn javadoc
+    archiveClassifier = 'javadoc'
+    from javadoc.destinationDir
+    archiveVersion = versions[ARTIFACT_ID]
+}
+
+publishing {
+    publications {
+        Core(MavenPublication) { publication ->
+            project.shadow.component(publication)
+            groupId GROUP_ID
+            artifactId ARTIFACT_ID
+            version versions[ARTIFACT_ID]
+            artifact sourcesJar
+            artifact javadocJar
+        }
+    }
+}

@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.HashSet;
 
 /**
  * Created by YangJing on 2019/10/14 .
@@ -25,7 +24,7 @@ public class BundleFileFilterTest extends BaseTest {
         ImmutableSet<String> filterRules = ImmutableSet.of(
                 "*/arm64-v8a/*"
         );
-        BundleFileFilter fileFilter = new BundleFileFilter(loadResourceFile("demo/demo.aab").toPath(), appBundle, new HashSet<>(filterRules));
+        BundleFileFilter fileFilter = new BundleFileFilter(loadResourceFile("demo/demo.aab").toPath(), appBundle, filterRules);
         AppBundle filteredAppBundle = fileFilter.filter();
         assert filteredAppBundle != null;
     }

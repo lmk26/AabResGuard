@@ -1,5 +1,9 @@
 package com.bytedance.android.aabresguard.executors;
 
+import static com.android.tools.build.bundletool.model.AppBundle.METADATA_DIRECTORY;
+import static com.android.tools.build.bundletool.model.utils.files.FilePreconditions.checkFileExistsAndReadable;
+import static com.bytedance.android.aabresguard.utils.FileOperation.getNetFileSizeDescription;
+
 import com.android.bundle.Files;
 import com.android.tools.build.bundletool.model.AppBundle;
 import com.android.tools.build.bundletool.model.BundleMetadata;
@@ -30,10 +34,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.zip.ZipFile;
 
-import static com.android.tools.build.bundletool.model.AppBundle.METADATA_DIRECTORY;
-import static com.android.tools.build.bundletool.model.utils.files.FilePreconditions.checkFileExistsAndReadable;
-import static com.bytedance.android.aabresguard.utils.FileOperation.getNetFileSizeDescription;
-
 /**
  * Created by YangJing on 2019/10/12 .
  * Email: yangjing.yeoh@bytedance.com
@@ -61,6 +61,8 @@ public class BundleFileFilter {
         this.rawAppBundle = rawAppBundle;
         if (filterRules == null) {
             filterRules = new HashSet<>();
+        } else {
+            filterRules = new HashSet<>(filterRules);
         }
         this.filterRules = filterRules;
 
