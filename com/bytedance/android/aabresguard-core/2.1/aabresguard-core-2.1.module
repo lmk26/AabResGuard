@@ -1,0 +1,83 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.bytedance.android",
+    "module": "aabresguard-core",
+    "version": "2.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.0"
+    }
+  },
+  "variants": [
+    {
+      "name": "shadowRuntimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "shadowed",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.android.tools.build",
+          "module": "aapt2-proto",
+          "version": {
+            "requires": "9.2.1-15009934"
+          }
+        },
+        {
+          "group": "commons-io",
+          "module": "commons-io",
+          "version": {
+            "requires": "2.13.0"
+          }
+        },
+        {
+          "group": "commons-codec",
+          "module": "commons-codec",
+          "version": {
+            "requires": "1.15"
+          }
+        },
+        {
+          "group": "com.google.guava",
+          "module": "guava",
+          "version": {
+            "requires": "30.0-jre"
+          }
+        },
+        {
+          "group": "org.dom4j",
+          "module": "dom4j",
+          "version": {
+            "requires": "2.1.1"
+          }
+        },
+        {
+          "group": "com.android.tools.build",
+          "module": "bundletool",
+          "version": {
+            "requires": "1.18.3"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "aabresguard-core-2.1.jar",
+          "url": "aabresguard-core-2.1.jar",
+          "size": 21787223,
+          "sha512": "a383b859afe8d7fafb6094dc85c7648666cd8af44541c982ef31e98c6305ffd17cb098c75c75a79df354a5497ea6aa8a8bf2f4de9c7bb0c7bba8f9ac61d55287",
+          "sha256": "2bc64f80cce20ae07390ae274af4d39ddea67f5578807263ff0dfd95d82182ec",
+          "sha1": "2f7424085305436a27169e6e80681fe6c7e9e260",
+          "md5": "ed4f631a4138a104ce5797572ee75899"
+        }
+      ]
+    }
+  ]
+}

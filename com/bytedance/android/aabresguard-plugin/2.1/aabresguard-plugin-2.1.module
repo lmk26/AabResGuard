@@ -1,0 +1,116 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.bytedance.android",
+    "module": "aabresguard-plugin",
+    "version": "2.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.0"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "com.bytedance.android",
+          "module": "aabresguard-core",
+          "version": {
+            "requires": "2.1"
+          },
+          "excludes": [
+            {
+              "group": "com.google.guava",
+              "module": "guava"
+            },
+            {
+              "group": "com.android.tools.build",
+              "module": "gradle"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "aabresguard-plugin-2.1.jar",
+          "url": "aabresguard-plugin-2.1.jar",
+          "size": 21673,
+          "sha512": "006f3c4691481b157128ffba53419ce728f667913d0ff7333c6369d1872bfeffc54f1443c7e43c1d7515a30613317a8abda58ec627e8074496c9f0b32ff94ce6",
+          "sha256": "f70f3cbb79241584738a89a127c2711285b388bf3531e87ef71a7c209fc44585",
+          "sha1": "d919567128bbaef19bf403c707f0bb253813b84f",
+          "md5": "b9822f262448196a36cc3c688e88b7d2"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 21,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk7",
+          "version": {
+            "requires": "2.3.21"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-gradle-plugin",
+          "version": {
+            "requires": "2.3.21"
+          }
+        },
+        {
+          "group": "com.bytedance.android",
+          "module": "aabresguard-core",
+          "version": {
+            "requires": "2.1"
+          },
+          "excludes": [
+            {
+              "group": "com.google.guava",
+              "module": "guava"
+            },
+            {
+              "group": "com.android.tools.build",
+              "module": "gradle"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "aabresguard-plugin-2.1.jar",
+          "url": "aabresguard-plugin-2.1.jar",
+          "size": 21673,
+          "sha512": "006f3c4691481b157128ffba53419ce728f667913d0ff7333c6369d1872bfeffc54f1443c7e43c1d7515a30613317a8abda58ec627e8074496c9f0b32ff94ce6",
+          "sha256": "f70f3cbb79241584738a89a127c2711285b388bf3531e87ef71a7c209fc44585",
+          "sha1": "d919567128bbaef19bf403c707f0bb253813b84f",
+          "md5": "b9822f262448196a36cc3c688e88b7d2"
+        }
+      ]
+    }
+  ]
+}
