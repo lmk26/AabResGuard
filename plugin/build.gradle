@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 apply plugin: 'java-library'
@@ -24,11 +25,13 @@ configurations {
     all*.exclude group: "com.android.tools.build", module: "bundletool"
 }
 
-sourceCompatibility = versions.java
-targetCompatibility = versions.java
+java {
+    sourceCompatibility = versions.java
+    targetCompatibility = versions.java
+}
 
 tasks.withType(KotlinCompile).configureEach {
-    kotlinOptions {
-        jvmTarget = versions.java
+    compilerOptions {
+        jvmTarget.set(JvmTarget.fromTarget(versions.java))
     }
 }

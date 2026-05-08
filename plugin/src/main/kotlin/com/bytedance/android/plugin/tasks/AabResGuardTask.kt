@@ -1,6 +1,6 @@
 package com.bytedance.android.plugin.tasks
 
-import com.android.build.gradle.api.ApplicationVariant
+import com.android.build.api.variant.ApplicationVariant
 import com.bytedance.android.aabresguard.commands.ObfuscateBundleCommand
 import com.bytedance.android.plugin.extensions.AabResGuardExtension
 import com.bytedance.android.plugin.internal.getBundleFilePath
@@ -94,7 +94,7 @@ open class AabResGuardTask @Inject constructor(outputFactory: StyledTextOutputFa
     private fun prepareUnusedFile() {
         val simpleName = variant.name.replace("Release", "")
         val name = simpleName[0].lowercaseChar() + simpleName.substring(1)
-        val resourcePath = "${project.buildDir}/outputs/mapping/$name/release/unused.txt"
+        val resourcePath = "${project.layout.buildDirectory.get().asFile}/outputs/mapping/$name/release/unused.txt"
         val usedFile = File(resourcePath)
         if (usedFile.exists()) {
             println("find unused.txt : ${usedFile.absolutePath}")

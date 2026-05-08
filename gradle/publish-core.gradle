@@ -17,7 +17,7 @@ tasks.register('javadocJar', Jar) {
 publishing {
     publications {
         Core(MavenPublication) { publication ->
-            project.shadow.component(publication)
+            from components.shadow
             groupId GROUP_ID
             artifactId ARTIFACT_ID
             version versions[ARTIFACT_ID]

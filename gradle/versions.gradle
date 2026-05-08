@@ -1,22 +1,22 @@
 def versions = [:]
-versions.agp = "8.12.0"
-versions.kotlin = "2.2.0"
-versions.java = "17"
-versions.aabresguard = "2.0"
+versions.agp = "9.2.1"
+versions.kotlin = "2.3.21"
+versions.java = "21"
+versions.aabresguard = "2.1"
 // android
 versions.compileSdkVersion = 35
-versions.minSdkVersion = 15
+versions.minSdkVersion = 21
 versions.targetSdkVersion = 35
 versions.support = "28.0.0"
 
-versions.bundletool = "1.18.1"
+versions.bundletool = "1.18.3"
 
 versions["aabresguard-core"] = versions.aabresguard
 versions["aabresguard-plugin"] = versions.aabresguard
 
 // plugin
 //versions["bintray-plugin"] = "1.8.4"
-versions.shadow = "8.1.1"
+versions.shadow = "9.4.1"
 
 ext.versions = versions
 
@@ -35,11 +35,11 @@ kotlin.embeddable = "org.jetbrains.kotlin:kotlin-compiler-embeddable:$versions.k
 deps.kotlin = kotlin
 // plugin
 def plugin = [:]
-plugin.shadow = "com.github.johnrengelman:shadow:${versions.shadow}"
+plugin.shadow = "com.gradleup.shadow:shadow-gradle-plugin:${versions.shadow}"
 //plugin['bintray-plugin'] = "com.jfrog.bintray.gradle:gradle-bintray-plugin:${versions["bintray-plugin"]}"
 deps.plugin = plugin
 // library
-deps.appcompatV7 = "com.android.support:appcompat-v7:${versions.support}"
+deps.appcompat = "androidx.appcompat:appcompat:1.7.0"
 deps.bundletool = "com.android.tools.build:bundletool:${versions.bundletool}"
 // aabresguard
 def aabresguard = [:]

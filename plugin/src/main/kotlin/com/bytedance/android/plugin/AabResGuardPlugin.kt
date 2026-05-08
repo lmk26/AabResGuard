@@ -1,7 +1,8 @@
 package com.bytedance.android.plugin
 
-import com.android.build.gradle.AppExtension
-import com.android.build.gradle.api.ApplicationVariant
+// 替换为新的 API 导入
+import com.android.build.api.variant.ApplicationAndroidComponentsExtension
+import com.android.build.api.variant.ApplicationVariant
 import com.bytedance.android.plugin.extensions.AabResGuardExtension
 import com.bytedance.android.plugin.tasks.AabResGuardTask
 import org.gradle.api.GradleException
@@ -9,53 +10,50 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.Task
 
-/**
- * Created by YangJing on 2019/10/15 .
- * Email: yangjing.yeoh@bytedance.com
- */
 class AabResGuardPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
         checkApplicationPlugin(project)
         project.extensions.create("aabResGuard", AabResGuardExtension::class.java)
 
-        val android = project.extensions.getByName("android") as AppExtension
-        project.afterEvaluate {
-            android.applicationVariants.all { variant ->
-                createAabResGuardTask(project, variant)
-            }
+        // 使用新的 androidComponents 扩展
+        val androidComponents = project.extensions.findByType(ApplicationAndroidComponentsExtension::class.java)
+        androidComponents?.onVariants { variant ->
+            createAabResGuardTask(project, variant)
         }
     }
 
     private fun createAabResGuardTask(project: Project, variant: ApplicationVariant) {
-        val variantName = variant.name.capitalize()
-        val bundleTaskName = "bundle$variantName"
-        if (project.tasks.findByName(bundleTaskName) == null) {
-            return
-        }
+        val variantName = variant.name.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
         val aabResGuardTaskName = "aabresguard$variantName"
-        val aabResGuardTask: AabResGuardTask = if (project.tasks.findByName(aabResGuardTaskName) == null) {
-            project.tasks.create(aabResGuardTaskName, AabResGuardTask::class.java)
-        } else {
-            project.tasks.getByName(aabResGuardTaskName) as AabResGuardTask
-        }
-        aabResGuardTask.setVariantScope(variant)
+        val bundleTaskName = "bundle$variantName"
 
-        val bundleTask: Task = project.tasks.getByName(bundleTaskName)
-        val bundlePackageTask: Task = project.tasks.getByName("package${variantName}Bundle")
-        bundleTask.dependsOn(aabResGuardTask)
-        aabResGuardTask.dependsOn(bundlePackageTask)
-        // AGP-4.0.0-alpha07: use FinalizeBundleTask to sign bundle file
-        // FinalizeBundleTask is executed after PackageBundleTask
-        val finalizeBundleTaskName = "sign${variantName}Bundle"
-        if (project.tasks.findByName(finalizeBundleTaskName) != null) {
-            aabResGuardTask.dependsOn(project.tasks.getByName(finalizeBundleTaskName))
+        // 使用 register 替代 create
+        val aabResGuardTaskProvider = project.tasks.register(aabResGuardTaskName, AabResGuardTask::class.java) { task ->
+            // 这里的配置代码只有在任务执行时才会运行
+            task.setVariantScope(variant)
+
+            // 设置任务依赖（在配置闭包内设置）
+            val bundlePackageTaskName = "package${variantName}Bundle"
+            task.dependsOn(bundlePackageTaskName)
+
+            val finalizeBundleTaskName = "sign${variantName}Bundle"
+            if (project.tasks.findByName(finalizeBundleTaskName) != null) {
+                task.dependsOn(finalizeBundleTaskName)
+            }
+        }
+
+        // 让 bundleTask 依赖于我们的 aabResGuardTask
+        project.tasks.configureEach { task ->
+            if (task.name == bundleTaskName) {
+                task.dependsOn(aabResGuardTaskProvider)
+            }
         }
     }
 
     private fun checkApplicationPlugin(project: Project) {
         if (!project.plugins.hasPlugin("com.android.application")) {
-            throw  GradleException("Android Application plugin required")
+            throw GradleException("Android Application plugin required")
         }
     }
 }

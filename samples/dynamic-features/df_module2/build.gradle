@@ -17,11 +17,16 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation deps.appcompatV7
+    implementation deps.appcompat
     implementation project(":app")
 
     implementation 'com.mikepenz:weather-icons-typeface:2.0.10.5-kotlin@aar'

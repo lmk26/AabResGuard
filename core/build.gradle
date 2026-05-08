@@ -11,7 +11,7 @@ buildscript {
 
 apply plugin: 'java-library'
 apply plugin: "com.google.protobuf"
-apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: "com.gradleup.shadow"
 apply from: rootProject.file('gradle/publish-core.gradle')
 
 [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
@@ -27,7 +27,9 @@ configurations.all {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compileOnly "com.android.tools.build:aapt2-proto:0.4.0"
+    shadow "com.android.tools.build:aapt2-proto:9.2.1-15009934"
+    compileOnly "com.android.tools.build:aapt2-proto:9.2.1-15009934"
+    compileOnly "com.google.protobuf:protobuf-java:3.25.1"
     compileOnly gradleApi()
  //   compile deps.gradle.agp
 
@@ -40,10 +42,10 @@ dependencies {
     implementation "com.google.auto.value:auto-value:1.5.2"
     shadow group: 'org.dom4j', name: 'dom4j', version: '2.1.1'
     shadow deps.bundletool
+    compileOnly deps.bundletool
 
     testImplementation deps.gradle.agp
     testImplementation deps.bundletool
-    testImplementation "com.android.tools.build:aapt2-proto:0.4.0"
     testImplementation group: 'org.dom4j', name: 'dom4j', version: '2.1.1'
     testImplementation "junit:junit:4.12"
     testImplementation "org.junit.jupiter:junit-jupiter-api:5.2.0"
@@ -61,13 +63,12 @@ protobuf {
     }
 }
 
-/** FIXME minimize会移除jar中全部的类
 shadowJar {
     archiveBaseName = "AabResGuard"
     version = versions[ARTIFACT_ID]
     archiveClassifier = ''
 
-    minimize()
+    // minimize()
 
     from sourceSets.main.output
     configurations = [
@@ -81,11 +82,12 @@ shadowJar {
     exclude 'META-INF/*.RSA'
 
     relocate 'com.android', 'shadow.bytedance.com.android'
+    relocate 'com.google.protobuf', 'shadow.bytedance.com.google.protobuf'
     relocate 'com.google', 'shadow.bytedance.com.google'
+    relocate 'android.aapt', 'shadow.bytedance.android.aapt'
 
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
-*/
 
 java {
     sourceCompatibility = versions.java

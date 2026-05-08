@@ -17,11 +17,16 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation deps.appcompatV7
+    implementation deps.appcompat
     implementation project(":app")
 
     implementation 'com.mikepenz:google-material-typeface:3.0.1.4.original-kotlin@aar'
