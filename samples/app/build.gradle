@@ -31,7 +31,6 @@ android {
         }
         debug {
             minifyEnabled false
-            shrinkResources false
             signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -39,6 +38,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        buildConfig true
     }
 
     compileOptions {
@@ -58,6 +58,23 @@ android {
         }
     }
     dynamicFeatures = [":df_module1", ":df_module2"]
+
+    flavorDimensions += "channel"
+    productFlavors {
+        register("AB") {
+            isDefault = true
+            dimension = "channel"
+            buildConfigField("String", "CHANNEL", "\"AB\"")
+        }
+        register("B") {
+            dimension = "channel"
+            buildConfigField("String", "CHANNEL", "\"B\"")
+        }
+        register("A") {
+            dimension = "channel"
+            buildConfigField("String", "CHANNEL", "\"A\"")
+        }
+    }
 }
 kotlin {
     compilerOptions {

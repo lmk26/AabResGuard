@@ -22,6 +22,18 @@ android {
         targetCompatibility JavaVersion.VERSION_21
     }
 
+    flavorDimensions += "channel"
+    productFlavors {
+        register("AB") {
+            dimension = "channel"
+        }
+        register("B") {
+            dimension = "channel"
+        }
+        register("A") {
+            dimension = "channel"
+        }
+    }
 }
 
 dependencies {
